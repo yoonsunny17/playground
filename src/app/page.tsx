@@ -57,7 +57,7 @@ const Home = () => {
             animate={{ y: "0%" }}
             exit={{ y: "100%" }}
             transition={{ duration: 1, ease: "easeInOut" }}
-            className="absolute top-0 left-0 w-full h-full bg-blue-500 flex items-center justify-center text-white text-4xl"
+            className="absolute top-0 left-0 w-full h-full bg-blue-500 flex items-center justify-center text-white text-4xl space-x-4 sm:space-x-2"
           >
             {showCategoryTitle && (
               <motion.div
