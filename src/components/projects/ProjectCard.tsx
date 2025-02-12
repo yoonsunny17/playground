@@ -102,9 +102,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                   {/* description & teamSize */}
                   <div>
                     <p className="text-lg font-medium">{project.description}</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                      {project.teamSize}
-                    </p>
+                    <p className="text-sm text-gray-600">{project.teamSize}</p>
                   </div>
                   {/* links */}
                   <div className="flex gap-3">
@@ -113,7 +111,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                       href={project.notion}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-3 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition"
+                      className="flex items-center gap-2 px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition"
                       onClick={(e) => e.stopPropagation()}
                     >
                       <SiNotion className="w-5 h-5" />
@@ -123,7 +121,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-3 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition"
+                      className="flex items-center gap-2 px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition"
                       onClick={(e) => e.stopPropagation()}
                     >
                       <SiGithub className="w-5 h-5" />

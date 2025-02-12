@@ -13,10 +13,8 @@ const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
 
     const variantStyles = {
       default: "bg-primary text-primary-foreground hover:bg-primary/80",
-      secondary:
-        "bg-gray-100 text-gray-900 dark:bg-gray-700 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-600",
-      outline:
-        "border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800",
+      secondary: "bg-gray-100 text-gray-900  hover:bg-gray-200 ",
+      outline: "border border-gray-200  text-gray-900  hover:bg-gray-100 ",
     };
 
     return (

@@ -133,7 +133,9 @@ const Home = () => {
           </motion.div>
         ) : (
           <>
-            <h1 className="text-6xl font-bold mb-4">🎉 Welcome 🎉</h1>
+            <h1 className="text-4xl sm:text-6xl font-bold mb-4">
+              🎉 Welcome 🎉
+            </h1>
             <div className="w-64 h-2 bg-gray-300 rounded-full overflow-hidden">
               <motion.div
                 className="h-full bg-blue-500"
