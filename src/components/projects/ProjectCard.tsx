@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { SiNotion, SiGithub } from "react-icons/si";
 import Badge from "../common/Badge";
+import Overlay from "../common/Overlay";
+import LinkButton from "../common/LinkButton";
 
 interface ProjectCardProps {
   project: {
@@ -44,6 +46,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         onClick={handleClick}
         onHoverStart={() => setIsHover(true)}
         onHoverEnd={() => setIsHover(false)}
+        onTap={() => setIsHover(!isHover)}
         className={`bg-white rounded-2xl overflow-hidden px-8 py-4 ${
           isOpen ? "fixed inset-4 z-100 m-auto max-w-4xl h-[80vh]" : ""
         }`}
@@ -104,29 +107,19 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                     <p className="text-lg font-medium">{project.description}</p>
                     <p className="text-sm text-gray-600">{project.teamSize}</p>
                   </div>
+
                   {/* links */}
                   <div className="flex gap-3">
-                    {/* rel: noopener noreferrer */}
-                    <a
+                    <LinkButton
+                      icon={<SiNotion className="w-5 h-5" />}
+                      title="Notion"
                       href={project.notion}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <SiNotion className="w-5 h-5" />
-                      <span className="font-semibold">Notion</span>
-                    </a>
-                    <a
+                    />
+                    <LinkButton
+                      icon={<SiGithub className="w-5 h-5" />}
+                      title="Github"
                       href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-3 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <SiGithub className="w-5 h-5" />
-                      <span className="font-semibold">Github</span>
-                    </a>
+                    />
                   </div>
 
                   {/* skills */}
@@ -189,18 +182,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           )}
         </motion.div>
       </motion.div>
+
       {/* Overlay */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setIsOpen(false)}
-            className="fixed inset-0 bg-black/40 z-50"
-          />
-        )}
-      </AnimatePresence>
+      <Overlay isOpen={isOpen} setIsOpen={setIsOpen} />
     </>
   );
 };
