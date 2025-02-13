@@ -4,14 +4,15 @@ import confetti from "canvas-confetti";
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import ProjectCards from "@/components/projects/ProjectCards";
-import GoBack from "@/components/common/GoBack";
+import ProjectsPage from "@/components/projects/ProjectsPage";
+import ProfilePage from "@/components/profile/ProfilePage";
 
 const Home = () => {
   const [progress, setProgress] = useState(0);
   const [showCategoryTitle, setShowCategoryTitle] = useState("");
   const [showMainPage, setShowMainPage] = useState(false);
   const [showProjectsPage, setShowProjectsPage] = useState(false);
+  const [showProfilePage, setShowProfilePage] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -112,9 +113,7 @@ const Home = () => {
               }}
               onHoverStart={() => setShowCategoryTitle("PROJECTS")}
               onHoverEnd={() => setShowCategoryTitle("")}
-              onClick={() => {
-                setShowProjectsPage(true);
-              }}
+              onClick={() => setShowProjectsPage(true)}
               className="cursor-none"
             >
               🤩
@@ -124,8 +123,9 @@ const Home = () => {
                 scale: 1.2,
                 transition: { duration: 0.3 },
               }}
-              onHoverStart={() => setShowCategoryTitle("?")}
+              onHoverStart={() => setShowCategoryTitle("ABOUT")}
               onHoverEnd={() => setShowCategoryTitle("")}
+              onClick={() => setShowProfilePage(true)}
               className="cursor-none"
             >
               😐
@@ -149,22 +149,16 @@ const Home = () => {
       </AnimatePresence>
 
       {/* projects page */}
-      <AnimatePresence>
-        {showProjectsPage && (
-          <motion.div
-            key={"projectsPage"}
-            initial={{ y: "-100%" }}
-            animate={{ y: "0%" }}
-            exit={{ y: "-100%" }}
-            transition={{ duration: 1, ease: "easeInOut" }}
-            className="absolute top-0 left-0 w-full h-full bg-yellow-500 flex flex-col items-center justify-center"
-          >
-            <ProjectCards />
-            {/* go to main page */}
-            <GoBack setShowProjectsPage={setShowProjectsPage} />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <ProjectsPage
+        showProjectsPage={showProjectsPage}
+        setShowProjectsPage={setShowProjectsPage}
+      />
+
+      {/* profile page */}
+      <ProfilePage
+        showProfilePage={showProfilePage}
+        setShowProfilePage={setShowProfilePage}
+      />
     </div>
   );
 };

@@ -1,31 +1,21 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 
 interface GoBackProps {
   setShowProjectsPage: (flag: boolean) => void;
+  className?: string;
 }
 
-const GoBack: React.FC<GoBackProps> = ({ setShowProjectsPage }) => {
-  const [isHovered, setIsHovered] = useState(false);
-
+const GoBack: React.FC<GoBackProps> = ({ setShowProjectsPage, className }) => {
   return (
     <motion.button
       onClick={() => setShowProjectsPage(false)}
-      className="absolute bottom-6 right-10 cursor-none text-white text-xl font-bold"
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
+      className={`${className}`}
     >
-      <span className="relative">BACK</span>
-
       {/* hover effect text */}
-      <motion.span
-        className="absolute text-orange-300 inset-0"
-        style={{ mixBlendMode: "difference", pointerEvents: "none" }}
-        animate={{ opacity: isHovered ? 1 : 0, x: isHovered ? 4 : 0 }}
-        transition={{ duration: 0.4, ease: "easeInOut" }}
-      >
+      <motion.span whileHover={{ x: 10 }} className="block py-2 text-white">
         BACK
       </motion.span>
     </motion.button>
