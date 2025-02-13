@@ -23,7 +23,7 @@ const ProfilePage: React.FC<ProfilePageProps> = ({
           transition={{ duration: 1, ease: "easeInOut" }}
           className="absolute top-0 left-0 w-full h-full bg-zinc-800 flex flex-col items-center justify-center"
         >
-          <div className="h-screen relative w-full overflow-hidden bg-gradient-to-b from-gray-800 to-gray-900">
+          <div className="h-screen relative w-screen overflow-auto bg-gradient-to-b from-gray-800 to-gray-900">
             {/* go to main page */}
             <GoBack
               setShowProjectsPage={setShowProfilePage}
